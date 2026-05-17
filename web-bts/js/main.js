@@ -1,76 +1,88 @@
-alert("💜 Selamat Datang di BTS News Hub!");
+console.log("💜 BTS News Hub Loaded");
 
 fetch("https://jsonplaceholder.typicode.com/posts?_limit=6")
+
   .then((response) => response.json())
-  .then(() => {
 
-    const homeContainer = document.getElementById("newsContainer");
-    const newsPage = document.getElementById("newsPage");
+  .then((data) => {
 
-    const beritaBTS = [
+    const newsPage =
+      document.getElementById("newsPage");
 
-      {
-        title: "🔥 BTS Umumkan World Tour 2026",
-        desc: "BTS resmi mengumumkan world tour terbaru setelah comeback besar mereka.",
-        image: "https://images.unsplash.com/photo-1506157786151-b8491531f063"
-      },
+    const homeContainer =
+      document.getElementById("newsContainer");
 
-      {
-        title: "💜 Album Baru BTS Pecahkan Rekor",
-        desc: "Album terbaru BTS berhasil masuk Billboard Global dan trending di Spotify.",
-        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f"
-      },
+    const judulBTS = [
 
-      {
-        title: "🎤 Jungkook Viral di Media Sosial",
-        desc: "ARMY kembali heboh dengan penampilan Jungkook terbaru.",
-        image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a"
-      },
+      "🔥 BTS Umumkan World Tour 2026",
+      "💜 Album Baru BTS Pecahkan Rekor",
+      "🎤 Jungkook Viral di TikTok",
+      "✨ RM Hadiri Fashion Week",
+      "🎶 Lagu Baru BTS Trending #1",
+      "🏟️ Konser BTS Sold Out"
 
-      {
-        title: "✨ RM dan Jin Hadiri Event Fashion",
-        desc: "Member BTS tampil di event internasional minggu ini.",
-        image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81"
-      },
+    ];
 
-      {
-        title: "🎶 Lagu Baru BTS Trending #1",
-        desc: "Single terbaru BTS mendominasi chart musik dunia.",
-        image: "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2"
-      },
+    const deskripsiBTS = [
 
-      {
-        title: "🏟️ Konser BTS Sold Out",
-        desc: "Tiket konser comeback BTS habis dalam beberapa menit.",
-        image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-      }
+      "BTS resmi mengumumkan konser dunia terbaru mereka tahun ini.",
+
+      "Album terbaru BTS berhasil trending di Spotify dan Billboard.",
+
+      "ARMY kembali heboh dengan penampilan terbaru Jungkook.",
+
+      "RM tampil memukau di acara fashion internasional minggu ini.",
+
+      "Single terbaru BTS mendominasi chart musik global.",
+
+      "Tiket konser BTS habis terjual hanya dalam beberapa menit."
+
+    ];
+
+    const gambarBTS = [
+
+      "images/bts8.png",
+      "images/bts9.png",
+      "images/bts10.png",
+      "images/bts4.jpg",
+      "images/bts6.png",
+      "images/bts7.png"
 
     ];
 
     let cards = "";
 
-    beritaBTS.forEach((item) => {
+    data.forEach((post, index) => {
 
       cards += `
-      
+
       <div class="col-md-4 mb-4">
 
         <div class="card shadow border-0 h-100">
 
-          <img src="${item.image}" class="card-img-top">
+          <img
+            src="${gambarBTS[index]}"
+            class="card-img-top"
+          >
 
           <div class="card-body">
 
             <h5 class="fw-bold">
-              ${item.title}
+
+              ${judulBTS[index]}
+
             </h5>
 
             <p>
-              ${item.desc}
+
+              ${deskripsiBTS[index]}
+
             </p>
 
             <button class="btn btn-dark w-100">
+
               Read More
+
             </button>
 
           </div>
@@ -78,19 +90,30 @@ fetch("https://jsonplaceholder.typicode.com/posts?_limit=6")
         </div>
 
       </div>
-      
+
       `;
     });
 
-    if(homeContainer){
+    // HOME
+    if (homeContainer) {
+
       homeContainer.innerHTML = cards;
+
     }
 
-    if(newsPage){
+    // NEWS
+    if (newsPage) {
+
       newsPage.innerHTML = cards;
+
     }
 
   })
+
   .catch((error) => {
+
     console.log(error);
+
   });
+
+alert("💜 Selamat Datang di BTS News Hub!");
