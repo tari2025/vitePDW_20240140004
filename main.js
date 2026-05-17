@@ -1,119 +1,65 @@
-console.log("💜 BTS News Hub Loaded");
+const newsPage = document.getElementById("newsPage");
 
-fetch("https://jsonplaceholder.typicode.com/posts?_limit=6")
+const beritaBTS = [
+  {
+    title: "🔥 BTS Umumkan World Tour 2026",
+    desc: "BTS resmi mengumumkan world tour terbaru setelah comeback besar mereka.",
+    image: "images/bts6.png"
+  },
 
-  .then((response) => response.json())
+  {
+    title: "💜 Album Baru BTS Pecahkan Rekor",
+    desc: "Album terbaru BTS berhasil trending di berbagai negara.",
+    image: "images/bts7.png"
+  },
 
-  .then((data) => {
+  {
+    title: "🎤 Jungkook Viral di Media Sosial",
+    desc: "ARMY kembali heboh dengan penampilan terbaru Jungkook.",
+    image: "images/bts8.png"
+  },
 
-    const newsPage =
-      document.getElementById("newsPage");
+  {
+    title: "✨ RM dan Jin Hadiri Event Fashion",
+    desc: "Member BTS tampil di event internasional minggu ini.",
+    image: "images/bts9.png"
+  }
+];
 
-    const homeContainer =
-      document.getElementById("newsContainer");
+let cards = "";
 
-    const judulBTS = [
+beritaBTS.forEach((item) => {
+  cards += `
+  
+  <div class="col-md-6 col-lg-3 mb-4">
 
-      "🔥 BTS Umumkan World Tour 2026",
-      "💜 Album Baru BTS Pecahkan Rekor",
-      "🎤 Jungkook Viral di TikTok",
-      "✨ RM Hadiri Fashion Week",
-      "🎶 Lagu Baru BTS Trending #1",
-      "🏟️ Konser BTS Sold Out"
+    <div class="card shadow border-0 h-100">
 
-    ];
+      <img src="${item.image}" class="card-img-top">
 
-    const deskripsiBTS = [
+      <div class="card-body">
 
-      "BTS resmi mengumumkan konser dunia terbaru mereka tahun ini.",
+        <h5 class="fw-bold">
+          ${item.title}
+        </h5>
 
-      "Album terbaru BTS berhasil trending di Spotify dan Billboard.",
+        <p>
+          ${item.desc}
+        </p>
 
-      "ARMY kembali heboh dengan penampilan terbaru Jungkook.",
-
-      "RM tampil memukau di acara fashion internasional minggu ini.",
-
-      "Single terbaru BTS mendominasi chart musik global.",
-
-      "Tiket konser BTS habis terjual hanya dalam beberapa menit."
-
-    ];
-
-    const gambarBTS = [
-
-      "images/bts8.png",
-      "images/bts9.png",
-      "images/bts10.png",
-      "images/bts4.jpg",
-      "images/bts6.png",
-      "images/bts7.png"
-
-    ];
-
-    let cards = "";
-
-    data.forEach((post, index) => {
-
-      cards += `
-
-      <div class="col-md-4 mb-4">
-
-        <div class="card shadow border-0 h-100">
-
-          <img
-            src="${gambarBTS[index]}"
-            class="card-img-top"
-          >
-
-          <div class="card-body">
-
-            <h5 class="fw-bold">
-
-              ${judulBTS[index]}
-
-            </h5>
-
-            <p>
-
-              ${deskripsiBTS[index]}
-
-            </p>
-
-            <button class="btn btn-dark w-100">
-
-              Read More
-
-            </button>
-
-          </div>
-
-        </div>
+        <button class="btn btn-dark w-100">
+          Read More
+        </button>
 
       </div>
 
-      `;
-    });
+    </div>
 
-    // HOME
-    if (homeContainer) {
+  </div>
+  
+  `;
+});
 
-      homeContainer.innerHTML = cards;
-
-    }
-
-    // NEWS
-    if (newsPage) {
-
-      newsPage.innerHTML = cards;
-
-    }
-
-  })
-
-  .catch((error) => {
-
-    console.log(error);
-
-  });
-
-alert("💜 Selamat Datang di BTS News Hub!");
+if(newsPage){
+  newsPage.innerHTML = cards;
+}
